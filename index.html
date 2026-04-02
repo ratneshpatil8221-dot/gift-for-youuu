@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Secret Gift ❤️</title>
+
+    <!-- Mobile Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: #ffe6f0;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        #gift {
+            font-size: 70px;
+            cursor: pointer;
+            margin-top: 20vh;
+        }
+
+        #content {
+            display: none;
+            padding: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        #noBtn {
+            position: absolute;
+        }
+
+        #messageContent {
+            display: none;
+            padding: 20px;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Responsive Video */
+        .video-container {
+            position: relative;
+            width: 90%;
+            max-width: 400px;
+            margin: auto;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            border-radius: 12px;
+        }
+
+        /* Hearts Animation */
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            user-select: none;
+            pointer-events: none;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-50px); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Gift -->
+<div id="gift" onclick="openGift()">🎁</div>
+
+<!-- Question -->
+<div id="content">
+    <h3>Do you love me? 😳</h3>
+    <button onclick="yes()">Yes ❤️</button>
+    <button id="noBtn" onmouseover="moveNo()">No 😅</button>
+</div>
+
+<!-- Message -->
+<div id="messageContent">
+    <h2>💌 A Message For You</h2>
+
+    <p>
+        I want to be with you because you make my life better in ways I never expected.<br>
+        From the moment you came into my life, everything started feeling more meaningful and complete.<br>
+        You make me smile even on my worst days, and just talking to you gives me peace.<br>
+        With you, I don’t have to pretend or hide anything—I can be my true self, and that’s something very rare and special.<br><br>
+
+        I love how you understand me without me having to explain everything, how you support me when I’m low, and how you celebrate my happiness like it’s your own.<br>
+        You bring positivity, warmth, and comfort into my life, and I feel lucky to have you.<br><br>
+
+        I want to grow with you, create memories with you, and stand by you no matter what comes our way.<br>
+        You’re not just someone I want right now, you’re someone I see in my future.<br>
+        Being with you feels right, and that’s why I want you—not just for a moment, but for a lifetime ❤️<br><br>
+
+        I LOVE YOU THE MOST ❤️🧿🫂✨
+    </p>
+
+    <!-- Responsive YouTube Video -->
+    <div class="video-container">
+        <iframe 
+            src="https://www.youtube.com/embed/oafxkMv4xnc"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+<script>
+function openGift() {
+    document.getElementById("gift").style.display = "none";
+    document.getElementById("content").style.display = "block";
+    createHearts();
+}
+
+function yes() {
+    document.getElementById("content").style.display = "none";
+    document.getElementById("messageContent").style.display = "block";
+}
+
+function moveNo() {
+    let x = Math.random() * (window.innerWidth - 100);
+    let y = Math.random() * (window.innerHeight - 50);
+    let btn = document.getElementById("noBtn");
+
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+
+    if (!btn.hoverCount) btn.hoverCount = 0;
+    btn.hoverCount++;
+
+    if (btn.hoverCount > 5) {
+        document.getElementById("content").style.display = "none";
+        document.getElementById("messageContent").style.display = "block";
+    }
+}
+
+function createHearts() {
+    setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        heart.style.fontSize = (10 + Math.random() * 30) + 'px';
+        heart.style.animationDuration = (3 + Math.random() * 5) + 's';
+        heart.innerText = '❤️';
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }, 300);
+}
+</script>
+
+</body>
+</html>
